@@ -1,5 +1,5 @@
 .Post {
-    max-width: 500px;
+    width: 90%;
     text-align: center;
     border: 1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
@@ -18,7 +18,7 @@
     color: #000;
 }
 .post-img {
-    width: 500px;
+    width: 100%;
     height: 350px;
     overflow: hidden;
 }
@@ -38,4 +38,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.info-holder span {
+    margin: 0 16px 0 0;
+    text-transform: lowercase;
+}
+.info-holder span:last-child {
+    margin: 0;
 }

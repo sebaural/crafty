@@ -17,7 +17,10 @@ const post = (props) => (
           {props.author}
         </span>
         <span>
-          {props.created_utc}
+          {props.created}
+        </span>
+        <span>
+          {props.ups}
         </span>
       </div>
     </div>

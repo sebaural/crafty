@@ -18,25 +18,30 @@ class Blog extends Component {
     axios.get('https://www.reddit.com/r/analog/top/.json')
       .then(response => {
         const mapPosts = response.data.data.children.map(posts => {
-          console.log(posts);
           return { ...posts }
           }
         );
 
         this.setState({posts: mapPosts});
-        console.log(this.state.posts);
       });
   };
 
     render () {
 
       const posts = this.state.posts.map(post => {
+
+        let createdTime = post.data.created;
+        let postDate = new Date(createdTime).toDateString();
+
+        console.log(post);
+
         return <Post
           key={post.data.id}
           url={post.data.url}
           title={post.data.title}
           author={post.data.author}
-          created_utc={post.data.created_utc}
+          created={postDate}
+          ups={post.data.ups}
         />
       });
 
