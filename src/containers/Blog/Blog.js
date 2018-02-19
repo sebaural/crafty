@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Post from '../../components/Post/Post';
+import FullPost from '../FavePost/FavePost';
+
 /*
 import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
@@ -47,11 +49,20 @@ class Blog extends Component {
 
         return (
             <div>
+{/*
+
                 <section className="Posts">
                   {posts}
                 </section>
+*/}
 
-{/*
+
+              <section>
+                <FullPost />
+              </section>
+
+
+              {/*
                 <section>
                     <FullPost />
                 </section>

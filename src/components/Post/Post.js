@@ -4,7 +4,6 @@ import './Post.css';
 
 const post = (props) => (
   <article className="Post" onClick={props.postClicked} >
-
     <div className="post_container">
       <div className="post-img">
         <img src={props.url} alt=""/>
