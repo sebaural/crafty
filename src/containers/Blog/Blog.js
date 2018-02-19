@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import Post from '../../components/Post/Post';
-import FullPost from '../FavePost/FavePost';
+// import FavePost from '../FavePost/FavePost';
 
 /*
-import FullPost from '../../components/FullPost/FullPost';
 import NewPost from '../../components/NewPost/NewPost';
 */
 import './Blog.css';
@@ -13,7 +12,8 @@ import './Blog.css';
 class Blog extends Component {
 
   state = {
-    posts: []
+    posts: [],
+    favedPosts: []
   };
 
   componentDidMount() {
@@ -28,6 +28,13 @@ class Blog extends Component {
       });
   };
 
+    selectedFave = (id) => {
+      const favesArr = this.state.favedPosts;
+      favesArr.push(id);
+
+      console.log(favesArr);
+    };
+
     render () {
 
       const posts = this.state.posts.map(post => {
@@ -35,7 +42,7 @@ class Blog extends Component {
         let createdTime = post.data.created;
         let postDate = new Date(createdTime).toDateString();
 
-        console.log(post);
+       // console.log(post);
 
         return <Post
           key={post.data.id}
@@ -44,31 +51,19 @@ class Blog extends Component {
           author={post.data.author}
           created={postDate}
           ups={post.data.ups}
+          postClicked={() => this.selectedFave(post.data.id)}
         />
       });
 
         return (
             <div>
-{/*
-
                 <section className="Posts">
                   {posts}
                 </section>
-*/}
-
-
+{/*
               <section>
-                <FullPost />
+                <FavePost />
               </section>
-
-
-              {/*
-                <section>
-                    <FullPost />
-                </section>
-                <section>
-                    <NewPost />
-                </section>
 */}
             </div>
         );
