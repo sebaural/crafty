@@ -1,20 +1,41 @@
 .Post {
-    width: 100px;
-    padding: 16px;
+    max-width: 500px;
     text-align: center;
     border: 1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
-    margin: 10px;
-    box-sizing: border-box;
+    margin: auto auto 40px;
     cursor: pointer;
 }
-
-.Post:hover,
-.Post:active {
-    background-color: #C0DDF5;
-}
-
 .Author {
     margin: 16px 0;
     color: #ccc;
+}
+
+.post_container h2 {
+    font-family: 'Arvo', serif;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+}
+.post-img {
+    width: 500px;
+    height: 350px;
+    overflow: hidden;
+}
+.post-img img {
+    width: 100%;
+    height: auto;
+}
+.title_holder {
+    padding: 30px 30px 40px;
+}
+.info-holder {
+    height: 60px;
+    font-size: 12px;
+    border-top: 1px solid #ddd;
+    color: #999;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
