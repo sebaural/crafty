@@ -2,9 +2,10 @@
     width: 90%;
     text-align: center;
     border: 1px solid #eee;
-    box-shadow: 0 2px 3px #ccc;
+    box-shadow: 0 1px 3px #ccc;
     margin: auto auto 40px;
     cursor: pointer;
+    background: #fafafa;
 }
 .Author {
     margin: 16px 0;

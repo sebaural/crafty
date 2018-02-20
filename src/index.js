@@ -7,8 +7,6 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 axios.defaults.baseURL = 'https://www.reddit.com/r/analog/top';
-//axios.defaults.headers.common['Authorization'] = "Friends ONLY";
-axios.defaults.headers.post['WASS'] = " UP !";
 
 ReactDOM.render( <App />, document.getElementById( 'root' ) );
 registerServiceWorker();

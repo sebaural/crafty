@@ -31,14 +31,13 @@ class Blog extends Component {
 
     selectedFave = (id) => {
       const favesArr = this.state.favedPosts;
-      const faveId = id.toString();
-     // console.log(faveId);
-      if (faveId in favesArr === false) {
+      const faveId = id;
+      const inArr = favesArr.indexOf(faveId);
+      if (inArr === -1) {
         favesArr.push(faveId);
-        this.setState({favedPosts: favesArr});
       }
-
-      console.log(this.state.favedPosts);
+      this.setState({favedPosts: favesArr});
+      console.log(inArr);
     };
 
     render () {
@@ -61,7 +60,16 @@ class Blog extends Component {
 
         return (
             <div>
+              <header>
+                <nav>
+                  <ul>
+                    <li><a href="/">All</a></li>
+                    <li><a href="/faves">Faves</a></li>
+                  </ul>
+                </nav>
+              </header>
                 <section className="Posts">
+                  <h2 className="page-title">Look at these posts</h2>
                   {posts}
                 </section>
 {/*

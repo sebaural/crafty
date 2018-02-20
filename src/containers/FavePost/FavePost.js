@@ -30,8 +30,6 @@ class FavePost extends Component {
       let createdTime = post.data.created;
       let postDate = new Date(createdTime).toDateString();
 
-      console.log(post);
-
       return <Post key={post.data.id}
         url={post.data.url}
         title={post.data.title}
@@ -50,9 +48,6 @@ class FavePost extends Component {
       </div>
     );
   }
-
-
-
 }
 
 export default FavePost;
