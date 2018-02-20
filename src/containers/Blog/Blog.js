@@ -17,7 +17,8 @@ class Blog extends Component {
   };
 
   componentDidMount() {
-    axios.get('https://www.reddit.com/r/analog/top/.json')
+    /*axios.get('https://www.reddit.com/r/analog/top/.json')*/
+    axios.get('/.json')
       .then(response => {
         const mapPosts = response.data.data.children.map(posts => {
           return { ...posts }
@@ -30,9 +31,14 @@ class Blog extends Component {
 
     selectedFave = (id) => {
       const favesArr = this.state.favedPosts;
-      favesArr.push(id);
+      const faveId = id.toString();
+     // console.log(faveId);
+      if (faveId in favesArr === false) {
+        favesArr.push(faveId);
+        this.setState({favedPosts: favesArr});
+      }
 
-      console.log(favesArr);
+      console.log(this.state.favedPosts);
     };
 
     render () {
@@ -41,8 +47,6 @@ class Blog extends Component {
 
         let createdTime = post.data.created;
         let postDate = new Date(createdTime).toDateString();
-
-       // console.log(post);
 
         return <Post
           key={post.data.id}

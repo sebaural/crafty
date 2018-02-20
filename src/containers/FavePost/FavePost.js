@@ -5,14 +5,14 @@ import Post from '../../components/Post/Post';
 
 import './FavePost.css';
 
-class FullPost extends Component {
+class FavePost extends Component {
 
   state = {
     posts: []
   };
 
   componentDidMount() {
-    axios.get('https://www.reddit.com/r/analog/top/.json')
+    axios.get('/.json')
       .then(response => {
         const mapPosts = response.data.data.children.map(posts => {
             return { ...posts }
@@ -55,4 +55,4 @@ class FullPost extends Component {
 
 }
 
-export default FullPost;
+export default FavePost;
