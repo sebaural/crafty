@@ -37,7 +37,7 @@ class Blog extends Component {
         favesArr.push(faveId);
       }
       this.setState({favedPosts: favesArr});
-      console.log(inArr);
+      console.log(favesArr);
     };
 
     render () {
@@ -72,11 +72,6 @@ class Blog extends Component {
                   <h2 className="page-title">Look at these posts</h2>
                   {posts}
                 </section>
-{/*
-              <section>
-                <FavePost />
-              </section>
-*/}
             </div>
         );
     }
