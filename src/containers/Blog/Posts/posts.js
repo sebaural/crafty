@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 
-class Posts extends React.Component {
+import Post from '../../../components/Post/Post';
+
+class Posts extends Component {
 
   state = {
     posts: [],
@@ -8,7 +11,9 @@ class Posts extends React.Component {
   };
 
   componentDidMount() {
-    /*axios.get('https://www.reddit.com/r/analog/top/.json')*/
+
+  //  console.log(this.props);
+
     axios.get('/.json')
       .then(response => {
         const mapPosts = response.data.data.children.map(posts => {

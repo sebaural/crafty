@@ -12,6 +12,9 @@ class FavePost extends Component {
   };
 
   componentDidMount() {
+
+    console.log(this.props);
+
     axios.get('/.json')
       .then(response => {
         const mapPosts = response.data.data.children.map(posts => {
@@ -42,9 +45,11 @@ class FavePost extends Component {
     return (
       <div>
         <h2>Fave Posts</h2>
+{/*
         <section className="Posts">
           {posts}
         </section>
+*/}
       </div>
     );
   }
