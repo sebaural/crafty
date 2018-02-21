@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 import Posts from './Posts/posts';
 
@@ -14,6 +14,14 @@ import FavePost from "./FavePost/FavePost";
 
 class Blog extends Component {
 
+  state = {
+    favoritePosts: [],
+    listNameFromParent: []
+  };
+
+  populateFavorites = (dataFromPosts) => {
+    this.setState({favoritePosts: dataFromPosts});
+  };
 
   render() {
 
@@ -23,17 +31,30 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><Link to="/">All</Link></li>
-              <li><Link to={{
-                pathname: '/faves',
-                search: '?quick-check=true'
-              }}>Faves</Link></li>
+              <li><Link to="/">
+                All
+              </Link></li>
+
+              <li>
+              <span>
+                {this.state.favoritePosts.listNameFromParent}
+              </span>
+                <Link to={{
+                  pathname: '/faves',
+                  search: '?pageId=2&quick-check=true'
+                }}>Faves</Link></li>
             </ul>
           </nav>
         </header>
 
-        <Route path="/" exact component={Posts}/>
-        <Route path="/faves" component={FavePost}/>
+        <Switch>
+            <Route path="/" exact>
+            <Posts callToParen={this.populateFavorites} />
+            </Route>
+            <Route path="/faves" exact>
+            <FavePost listNameFromParent={this.state.favoritePosts} />
+            </Route>
+        </Switch>
 
       </div>
     );

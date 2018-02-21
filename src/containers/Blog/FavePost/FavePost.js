@@ -8,27 +8,38 @@ import './FavePost.css';
 class FavePost extends Component {
 
   state = {
-    posts: []
+    favedPosts: [],
+    selectedPost: null
   };
 
   componentDidMount() {
 
-    console.log(this.props);
+    /*
+        if (this.props.match.params.id) {
+          if (!this.state.favedPosts || (this.state.favedPosts && this.state.favedPosts.id !== this.props.match.params.id)) {
+    */
+        axios.get('/.json')
+          .then(response => {
+            const mapPosts = response.data.data.children.map(posts => {
+                return { ...posts }
+              }
+            );
 
-    axios.get('/.json')
-      .then(response => {
-        const mapPosts = response.data.data.children.map(posts => {
-            return { ...posts }
-          }
-        );
+            this.setState({favedPosts: mapPosts});
+          });
+/*
+      }
+    }
+*/
 
-        this.setState({posts: mapPosts});
-      });
+    console.log(this.props.listNameFromParent);
+
   };
 
   render () {
 
-    const posts = this.state.posts.map(post => {
+
+    const Favored = this.state.favedPosts.map(post => {
 
       let createdTime = post.data.created;
       let postDate = new Date(createdTime).toDateString();
@@ -45,11 +56,11 @@ class FavePost extends Component {
     return (
       <div>
         <h2>Fave Posts</h2>
-{/*
+
         <section className="Posts">
-          {posts}
+          {Favored}
         </section>
-*/}
+
       </div>
     );
   }
