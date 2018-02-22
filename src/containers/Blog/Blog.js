@@ -16,14 +16,20 @@ class Blog extends Component {
 
   state = {
     favoritePosts: [],
-    listNameFromParent: []
+    postsTotal : ''
   };
 
   populateFavorites = (dataFromPosts) => {
     this.setState({favoritePosts: dataFromPosts});
   };
 
+  sendTotal = (getTotal) => {
+    this.setState({postsTotal: getTotal});
+  };
+
   render() {
+
+    console.log(this.state.postsTotal);
 
     return (
       <div>
@@ -31,13 +37,16 @@ class Blog extends Component {
         <header>
           <nav>
             <ul>
-              <li><Link to="/">
+              <li><span>
+                {this.state.postsTotal}
+              </span>
+                <Link to="/">
                 All
               </Link></li>
 
               <li>
               <span>
-                {this.state.favoritePosts.listNameFromParent}
+                {this.state.favoritePosts.length}
               </span>
                 <Link to={{
                   pathname: '/faves',
@@ -49,7 +58,7 @@ class Blog extends Component {
 
         <Switch>
             <Route path="/" exact>
-            <Posts callToParen={this.populateFavorites} />
+            <Posts callToParen={this.populateFavorites} postsTotal={this.sendTotal} />
             </Route>
             <Route path="/faves" exact>
             <FavePost listNameFromParent={this.state.favoritePosts} />

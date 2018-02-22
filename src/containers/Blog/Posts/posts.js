@@ -12,6 +12,7 @@ import Post from '../../../components/Post/Post';
     fileteredPosts: []
   };
 
+
   componentDidMount() {
 
     axios.get('/.json')
@@ -23,9 +24,9 @@ import Post from '../../../components/Post/Post';
 
         this.setState({posts: mapPosts});
       });
-
+    // send data to parent/Blog
     this.props.callToParen(this.state.selectedPosts);
-
+    this.props.postsTotal(this.state.posts.length);
   };
 
   selectedFave = (id) => {
@@ -36,10 +37,10 @@ import Post from '../../../components/Post/Post';
       favesArr.push(faveId);
     }
     this.setState({selectedPosts: favesArr});
-
   };
 
   render()  {
+
 
         const posts = this.state.posts.map(post => {
 
