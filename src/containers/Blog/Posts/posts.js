@@ -9,7 +9,8 @@ import Post from '../../../components/Post/Post';
   state = {
     posts: [],
     selectedPosts: [],
-    fileteredPosts: []
+    fileteredPosts: [],
+    toggleFlipClass: ''
   };
 
 
@@ -26,7 +27,6 @@ import Post from '../../../components/Post/Post';
       });
     // send data to parent/Blog
     this.props.callToParen(this.state.selectedPosts);
-    this.props.postsTotal(this.state.posts.length);
   };
 
   selectedFave = (id) => {
@@ -39,8 +39,16 @@ import Post from '../../../components/Post/Post';
     this.setState({selectedPosts: favesArr});
   };
 
-  render()  {
+  flipClass = (event) => {
+    const flipClass = this.state.toggleFlipClass;
+    if(flipClass !== 'flip') {
+      this.setState({toggleFlipClass: 'flip'});
 
+    }
+    console.log(flipClass);
+  };
+
+  render()  {
 
         const posts = this.state.posts.map(post => {
 
@@ -55,13 +63,14 @@ import Post from '../../../components/Post/Post';
             created={postDate}
             ups={post.data.ups}
             postClicked={() => this.selectedFave(post.data.id)}
+            addFlip={this.flipClass}
+            flipIt={this.state.toggleFlipClass}
           />
           );
         });
 
     return (
-      <section className="Posts">
-        <h2 className="page-title">Look at these photos</h2>
+      <section className="Posts all-at-front">
         {posts}
       </section>
     );

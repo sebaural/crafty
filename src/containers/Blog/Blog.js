@@ -15,50 +15,51 @@ import FavePost from "./FavePost/FavePost";
 class Blog extends Component {
 
   state = {
-    favoritePosts: [],
-    postsTotal : ''
+    favoritePosts: []
   };
 
   populateFavorites = (dataFromPosts) => {
     this.setState({favoritePosts: dataFromPosts});
   };
 
-  sendTotal = (getTotal) => {
-    this.setState({postsTotal: getTotal});
-  };
-
   render() {
-
-    console.log(this.state.postsTotal);
 
     return (
       <div>
 
-        <header>
+        <header className="header-container">
           <nav>
-            <ul>
-              <li><span>
-                {this.state.postsTotal}
-              </span>
+            <ul className="tabs">
+              <li className="active">
                 <Link to="/">
-                All
-              </Link></li>
+                  <span>
+                    <i class="fab fa-reddit-alien"></i>
+                  </span>
+                  /r/analog
+                </Link>
+              </li>
 
               <li>
-              <span>
-                {this.state.favoritePosts.length}
-              </span>
                 <Link to={{
-                  pathname: '/faves',
-                  search: '?pageId=2&quick-check=true'
-                }}>Faves</Link></li>
+                pathname: '/faves',
+                search: '?pageId=2&quick-check=true'
+                }}>
+                  <span>
+                    <i class="fas fa-heart"></i>
+                  </span>
+                  <span>favorites  </span>
+                  <span>
+                  ({this.state.favoritePosts.length})
+                  </span>
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
 
         <Switch>
             <Route path="/" exact>
-            <Posts callToParen={this.populateFavorites} postsTotal={this.sendTotal} />
+            <Posts callToParen={this.populateFavorites} />
             </Route>
             <Route path="/faves" exact>
             <FavePost listNameFromParent={this.state.favoritePosts} />

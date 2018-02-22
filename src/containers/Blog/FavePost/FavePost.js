@@ -34,30 +34,16 @@ class FavePost extends Component {
         this.setState({favedPosts: mapPosts});
       });
 
-    //let idsArray = [];
     let favedPostsState = this.state.favedPosts;
-    for(let i = 0; i < favedPostsState.length; i++) {
-     // idsArray.push(favedPostsState[i]);
+    for (let i = 0; i < favedPostsState.length; i++) {
 
-
-     console.log(favedPostsState[i]);
+      console.log(favedPostsState[i]);
 
     }
 
   };
 
-/*
-  componentDidUpdate() {
-    const favePostsList = this.selectedPosts.map(liked => {
-        return liked;
-    });
-
-    console.log(favePostsList);
-  }
-*/
-
-  render () {
-
+  render() {
 
     const Favored = this.state.favedPosts.map(post => {
 
@@ -65,23 +51,17 @@ class FavePost extends Component {
       let postDate = new Date(createdTime).toDateString();
 
       return <Post key={post.data.id}
-        url={post.data.url}
-        title={post.data.title}
-        author={post.data.author}
-        created={postDate}
-        ups={post.data.ups}
-      />
+                   url={post.data.url}
+                   title={post.data.title}
+                   author={post.data.author}
+                   created={postDate}
+                   ups={post.data.ups}/>
     });
 
     return (
-      <div>
-        <h2>Fave Posts</h2>
-
-        <section className="Posts">
-          {Favored}
-        </section>
-
-      </div>
+      <section className="Posts favorites">
+        {Favored}
+      </section>
     );
   }
 }
