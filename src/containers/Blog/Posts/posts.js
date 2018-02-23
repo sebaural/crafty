@@ -40,7 +40,7 @@ import Post from '../../../components/Post/Post';
   };
 
   flipClass = (event) => {
-     const flipClass = event.target.classList.value;
+     const flipClass = event.currentTarget;
     console.log(flipClass);
   };
 
