@@ -40,11 +40,7 @@ import Post from '../../../components/Post/Post';
   };
 
   flipClass = (event) => {
-    const flipClass = this.state.toggleFlipClass;
-    if(flipClass !== 'flip') {
-      this.setState({toggleFlipClass: 'flip'});
-
-    }
+     const flipClass = event.target.classList.value;
     console.log(flipClass);
   };
 
@@ -63,8 +59,7 @@ import Post from '../../../components/Post/Post';
             created={postDate}
             ups={post.data.ups}
             postClicked={() => this.selectedFave(post.data.id)}
-            addFlip={this.flipClass}
-            flipIt={this.state.toggleFlipClass}
+            addFlip={(event) => this.flipClass(event)}
           />
           );
         });

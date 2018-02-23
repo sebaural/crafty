@@ -4,12 +4,12 @@ import './Post.css';
 
 const post = (props) => (
 
-  <article className="Post">
+  <article className="Post" onClick={props.addFlip}>
     <div className="post_container">
       <div className="post-img">
         <img src={props.url} alt=""/>
 
-        <div className="chooser" onClick={props.addFlip}>
+        <div className="chooser" >
           <div className="chooser-inner">
               <div className='top' onClick={props.postClicked}>
                 <i class="far fa-heart"></i>
