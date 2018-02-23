@@ -43,6 +43,10 @@
     opacity: 0;
     transition: right 0.5s, opacity 0.5s;
 }
+.chooser.flip {
+    right: 14%;
+    opacity: 1;
+}
 .chooser .chooser-inner {
     position: relative;
 }
@@ -119,12 +123,17 @@
     font-size: 28px;
     width: 50px;
     height: 50px;
-    border: 1px solid #f00;
+    border: 1px solid #cc0000;
     border-radius: 50%;
     padding: 7px 0 0 1px;
     opacity: 0;
     cursor: pointer;
     transition: left 0.5s, opacity 0.5s;
+    -webkit-transition-delay: 0.5s;
+    -moz-transition-delay: 0.5s;
+    -ms-transition-delay: 0.5s;
+    -o-transition-delay: 0.5s;
+    transition-delay: 0.5s;
 }
 .post-img:hover .removeFave {
     left: 22px;

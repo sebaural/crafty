@@ -8,17 +8,10 @@ import './FavePost.css';
 class FavePost extends Component {
 
   state = {
-    favedPosts: [],
-    selectedPosts: []
+    favedPosts: []
   };
 
   componentDidMount() {
-
-    let getFaveListFromParent = this.props.listNameFromParent;
-    for (let i = 0; i < getFaveListFromParent.length; i++) {
-      console.log(getFaveListFromParent[i]);
-    }
-    this.setState({selectedPosts: getFaveListFromParent});
 
     /*
         if (this.props.match.params.id) {
@@ -27,23 +20,32 @@ class FavePost extends Component {
     axios.get('/.json')
       .then(response => {
 
-        const mapPosts = response.data.data.children.map(posts => {
-            return {...posts};
+        const mapPosts = response.data.data.children.map((posts, i) => {
+
+            /*return {...posts};*/
+          return posts;
           }
         );
         this.setState({favedPosts: mapPosts});
       });
 
-    let favedPostsState = this.state.favedPosts;
-    for (let i = 0; i < favedPostsState.length; i++) {
 
-      console.log(favedPostsState[i]);
+    findId = (key, value) => {
+        let key = "id";
+        let value = value;
+    };
 
+    let getFaveListFromParent = this.props.listNameFromParent;
+    for (let i = 0; i < getFaveListFromParent.length; i++) {
+      console.log(typeof getFaveListFromParent[i]);
     }
 
   };
 
   render() {
+
+    const doIt = this.state.favedPosts;
+    console.log(doIt);
 
     const Favored = this.state.favedPosts.map(post => {
 

@@ -19,6 +19,7 @@ class Blog extends Component {
   };
 
   populateFavorites = (dataFromPosts) => {
+
     this.setState({favoritePosts: dataFromPosts});
   };
 
@@ -62,7 +63,7 @@ class Blog extends Component {
             <Posts callToParen={this.populateFavorites} />
             </Route>
             <Route path="/faves" exact>
-            <FavePost listNameFromParent={this.state.favoritePosts} />
+              <FavePost listNameFromParent={this.state.favoritePosts} />
             </Route>
         </Switch>
 

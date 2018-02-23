@@ -8,9 +8,7 @@ import Post from '../../../components/Post/Post';
 
   state = {
     posts: [],
-    selectedPosts: [],
-    fileteredPosts: [],
-    toggleFlipClass: ''
+    selectedPosts: []
   };
 
 
@@ -40,8 +38,7 @@ import Post from '../../../components/Post/Post';
   };
 
   flipClass = (event) => {
-     const flipClass = event.currentTarget;
-    console.log(flipClass);
+     event.currentTarget.classList.toggle("flip");
   };
 
   render()  {
