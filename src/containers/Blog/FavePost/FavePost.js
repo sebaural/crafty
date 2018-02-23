@@ -11,6 +11,21 @@ class FavePost extends Component {
     favedPosts: []
   };
 
+/*
+  findId = (key, value) => {
+    return value = "7zkopk";
+  };
+
+  traverse = (o) => {
+    for (let i in o) {
+      if (!!o[i] && typeof(o[i])=="object") {
+        console.log(i, o[i])
+        traverse(o[i] );
+      }
+    }
+  };
+*/
+
   componentDidMount() {
 
     /*
@@ -26,26 +41,26 @@ class FavePost extends Component {
           return posts;
           }
         );
+
         this.setState({favedPosts: mapPosts});
+
+        console.log(mapPosts);
+
       });
 
 
-    findId = (key, value) => {
-        let key = "id";
-        let value = value;
-    };
-
+/*
     let getFaveListFromParent = this.props.listNameFromParent;
     for (let i = 0; i < getFaveListFromParent.length; i++) {
       console.log(typeof getFaveListFromParent[i]);
     }
+*/
+
 
   };
 
   render() {
 
-    const doIt = this.state.favedPosts;
-    console.log(doIt);
 
     const Favored = this.state.favedPosts.map(post => {
 
