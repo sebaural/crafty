@@ -38,25 +38,20 @@ class FavePost extends Component {
         const mapPosts = response.data.data.children.map((posts, i) => {
 
             /*return {...posts};*/
-          return posts;
+            return posts;
           }
         );
 
         this.setState({favedPosts: mapPosts});
 
-        console.log(mapPosts);
-
-      });
-
-
-/*
-    let getFaveListFromParent = this.props.listNameFromParent;
-    for (let i = 0; i < getFaveListFromParent.length; i++) {
-      console.log(typeof getFaveListFromParent[i]);
-    }
-*/
-
-
+        /*
+            let getFaveListFromParent = this.props.listNameFromParent;
+            for (let i = 0; i < getFaveListFromParent.length; i++) {
+              console.log(typeof getFaveListFromParent[i]);
+            }
+        */
+      }
+      );
   };
 
   render() {
