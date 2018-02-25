@@ -32,26 +32,35 @@ class FavePost extends Component {
         if (this.props.match.params.id) {
           if (!this.state.favedPosts || (this.state.favedPosts && this.state.favedPosts.id !== this.props.match.params.id)) {
     */
-    axios.get('/.json')
-      .then(response => {
 
-        const mapPosts = response.data.data.children.map((posts, i) => {
 
-            /*return {...posts};*/
-            return posts;
+    let getFaveListFromParent = this.props.listNameFromParent;
+    for (let i = 0; i < getFaveListFromParent.length; i++) {
+      axios.get('/.json')
+        .then(response => {
+
+            const mapPosts = response.data.data.children.map((posts) => {
+                return posts;
+              }
+            );
+
+            let getFaveListFromParent = this.props.listNameFromParent;
+            let outputList = [];
+
+            for (let j = 0; j < mapPosts.length; j++) {
+              if (mapPosts[i] === getFaveListFromParent[i]) {
+                outputList.push(i);
+              }
+
+            }
+
+          console.log(outputList);
+            this.setState({favedPosts: outputList});
           }
         );
 
-        this.setState({favedPosts: mapPosts});
+    }
 
-        /*
-            let getFaveListFromParent = this.props.listNameFromParent;
-            for (let i = 0; i < getFaveListFromParent.length; i++) {
-              console.log(typeof getFaveListFromParent[i]);
-            }
-        */
-      }
-      );
   };
 
   render() {
