@@ -3,25 +3,31 @@ import { Route, Link, Switch } from 'react-router-dom';
 
 import Posts from './Posts/posts';
 
-/*
-// import axios from 'axios';
-// import Post from '../../components/Post/Post';
-// import FavePost from '../FavePost/FavePost';
-import NewPost from '../../components/NewPost/NewPost';
-*/
 import './Blog.css';
 import FavePost from "./FavePost/FavePost";
 
 class Blog extends Component {
 
   state = {
-    favoritePosts: []
+    favoritePosts: [],
+    activeNavLink : "blue"
   };
 
   populateFavorites = (dataFromPosts) => {
 
     this.setState({favoritePosts: dataFromPosts});
   };
+
+  toggleActive = () => {
+    let activeClass = (this.state.activeNavLink === " blue") ? "active" : "not-active";
+    this.setState({activeNavLink: activeClass});
+  };
+
+/*
+  componentWillReceiveProps (nextProps, nextState) {
+    console.log(nextProps, nextState);
+  }
+*/
 
   render() {
 
@@ -31,7 +37,7 @@ class Blog extends Component {
         <header className="header-container">
           <nav>
             <ul className="tabs">
-              <li className="active">
+              <li className={this.state.activeNavLink && "active"} onClick={this.props.toggleActive}>
                 <Link to="/">
                   <span>
                     <i class="fab fa-reddit-alien"></i>
@@ -40,7 +46,7 @@ class Blog extends Component {
                 </Link>
               </li>
 
-              <li>
+              <li className={this.state.activeNavLink} onClick={this.props.toggleActive}>
                 <Link to={{
                 pathname: '/faves',
                 search: '?pageId=2&quick-check=true'

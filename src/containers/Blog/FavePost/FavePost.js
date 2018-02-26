@@ -28,55 +28,43 @@ class FavePost extends Component {
 
   componentDidMount() {
 
-    /*
-        if (this.props.match.params.id) {
-          if (!this.state.favedPosts || (this.state.favedPosts && this.state.favedPosts.id !== this.props.match.params.id)) {
-    */
+    axios.get('/.json')
+      .then(response => {
 
-
-    let getFaveListFromParent = this.props.listNameFromParent;
-    for (let i = 0; i < getFaveListFromParent.length; i++) {
-      axios.get('/.json')
-        .then(response => {
-
-            const mapPosts = response.data.data.children.map((posts) => {
-                return posts;
-              }
-            );
-
-            let getFaveListFromParent = this.props.listNameFromParent;
-            let outputList = [];
-
-            for (let j = 0; j < mapPosts.length; j++) {
-              if (mapPosts[i] === getFaveListFromParent[i]) {
-                outputList.push(i);
-              }
-
+          let mapPosts = response.data.data.children.map((posts) => {
+              return { ...posts };
             }
+          );
 
-          console.log(outputList);
-            this.setState({favedPosts: outputList});
+          let outputList = [];
+
+          let getFaveListFromParent = this.props.listNameFromParent;
+
+          for (let i = 0; i < getFaveListFromParent.length; i++) {
+
+            outputList.push(mapPosts.filter((x) => {
+              return x.data.id === getFaveListFromParent[i];
+            }));
           }
-        );
-
-    }
-
+          this.setState({favedPosts: outputList});
+        }
+      );
   };
 
   render() {
 
 
-    const Favored = this.state.favedPosts.map(post => {
+    const Favored = this.state.favedPosts.map((post, i) => {
 
-      let createdTime = post.data.created;
-      let postDate = new Date(createdTime).toDateString();
+        let createdTime = post[i]['data'].created;
+        let postDate = new Date(createdTime).toDateString();
 
-      return <Post key={post.data.id}
-                   url={post.data.url}
-                   title={post.data.title}
-                   author={post.data.author}
-                   created={postDate}
-                   ups={post.data.ups}/>
+        return <Post key={post[i]['data'].id}
+                     url={post[i]['data'].url}
+                     title={post[i]['data'].title}
+                     author={post[i]['data'].author}
+                     created={postDate}
+                     ups={post[i]['data'].ups}/>
     });
 
     return (

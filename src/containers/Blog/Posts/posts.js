@@ -8,9 +8,9 @@ import Post from '../../../components/Post/Post';
 
   state = {
     posts: [],
-    selectedPosts: []
+    selectedPosts: [],
+    countVotes: ''
   };
-
 
   componentDidMount() {
 
@@ -31,9 +31,18 @@ import Post from '../../../components/Post/Post';
     const favesArr = this.state.selectedPosts;
     const faveId = id;
     const inArr = favesArr.indexOf(faveId);
+
+    let voteCount = this.state.countVotes;
+
     if (inArr === -1) {
+
       favesArr.push(faveId);
+      voteCount = + 1;
+      console.log(voteCount);
     }
+
+    this.setState({countVotes: voteCount});
+
     this.setState({selectedPosts: favesArr});
   };
 
@@ -41,7 +50,7 @@ import Post from '../../../components/Post/Post';
      event.currentTarget.classList.toggle("flip");
   };
 
-  render()  {
+    render()  {
 
         const posts = this.state.posts.map(post => {
 
