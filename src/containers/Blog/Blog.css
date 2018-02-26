@@ -29,16 +29,12 @@ nav ul {
 .tabs a {
     font-family: "Helvetica", sans-serif;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 400;
     color: #57a2e4;
     text-decoration: none;
     display: inline-block;
     height: 100%;
     padding: 8px 20px 10px;
-}
-.tabs .active a {
-    background: #57a2e4;
-    color: #fff;
 }
 
 .tabs li {
@@ -48,9 +44,31 @@ nav ul {
     font-size: 16px;
     color: #57a2e4;
 }
-.tabs li.active {
+
+.first a,
+.first {
+    background: #57a2e4;
     color: #fff;
+}
+
+.on .first a,
+.on .first {
+    background: transparent;
+    color: #57a2e4;
+}
+.on .second a,
+.on .second {
+    background: #57a2e4;
+    color: #fff;
+}
+.second a {
+    padding: 11px 20px;
 }
 .tabs li:first-child span {
     padding: 0 2px 0 0;
+    font-size: 18px;
+}
+.tabs li:last-child span:first-child {
+    padding: 0 4px 0 0;
+    font-size: 14px;
 }

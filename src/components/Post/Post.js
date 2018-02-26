@@ -13,16 +13,16 @@ const post = (props) => (
         <div className="chooser" onClick={props.addFlip}>
           <div className="chooser-inner">
               <div className='top' onClick={props.postClicked}>
-                <i class="far fa-heart"></i>
+                <i className="far fa-heart"></i>
               </div>
-              <div className="bottom">
-                <i class="fas fa-heart"></i>
+              <div className="bottom" onClick={props.removePost}>
+                <i className="fas fa-heart"></i>
               </div>
           </div>
         </div>
 
         <div className="removeFave">
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
         </div>
 
       </div>
@@ -32,7 +32,7 @@ const post = (props) => (
       <div className="info-holder">
         <div>
           <span>
-            <i class="fas fa-user"></i>
+            <i className="fas fa-user"></i>
           </span>
           <span>
             {props.author}
@@ -41,7 +41,7 @@ const post = (props) => (
         <span> | </span>
           <div>
             <span>
-              <i class="far fa-calendar-plus"></i>
+              <i className="far fa-calendar-plus"></i>
             </span>
           <span>
             {props.created}
@@ -50,7 +50,7 @@ const post = (props) => (
         <span> | </span>
           <div>
             <span>
-              <i class="fas fa-hand-point-up"></i>
+              <i className="fas fa-hand-point-up"></i>
             </span>
             <span>
               {props.ups}

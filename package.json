@@ -19,7 +19,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage": "https://sebaural.github.io/all_jacks",
+  "homepage": "https://github.com/sebaural/crafty.git",
   "devDependencies": {
     "gh-pages-deploy": "^0.4.2"
   }

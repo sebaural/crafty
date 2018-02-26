@@ -10,24 +10,24 @@ class Blog extends Component {
 
   state = {
     favoritePosts: [],
-    activeNavLink : "blue"
+    votesCount: 0
   };
 
   populateFavorites = (dataFromPosts) => {
-
     this.setState({favoritePosts: dataFromPosts});
   };
 
-  toggleActive = () => {
-    let activeClass = (this.state.activeNavLink === " blue") ? "active" : "not-active";
-    this.setState({activeNavLink: activeClass});
+  toggleActive = (event) => {
+    event.currentTarget.classList.toggle("on");
+  };
+  populateCount = (count) => {
+    this.setState({votesCount: count});
   };
 
-/*
-  componentWillReceiveProps (nextProps, nextState) {
-    console.log(nextProps, nextState);
-  }
-*/
+  /*
+    componentWillReceiveProps (nextProps, nextState) {
+    }
+  */
 
   render() {
 
@@ -36,23 +36,23 @@ class Blog extends Component {
 
         <header className="header-container">
           <nav>
-            <ul className="tabs">
-              <li className={this.state.activeNavLink && "active"} onClick={this.props.toggleActive}>
+            <ul className="tabs" onClick={(event) => this.toggleActive(event)}>
+              <li className="first">
                 <Link to="/">
                   <span>
-                    <i class="fab fa-reddit-alien"></i>
+                    <i className="fab fa-reddit-alien"></i>
                   </span>
                   /r/analog
                 </Link>
               </li>
 
-              <li className={this.state.activeNavLink} onClick={this.props.toggleActive}>
+              <li className="second">
                 <Link to={{
-                pathname: '/faves',
-                search: '?pageId=2&quick-check=true'
+                  pathname: '/faves',
+                  search: '?pageId=2&quick-check=true'
                 }}>
                   <span>
-                    <i class="fas fa-heart"></i>
+                    <i className="fas fa-heart"></i>
                   </span>
                   <span>favorites  </span>
                   <span>
@@ -65,12 +65,12 @@ class Blog extends Component {
         </header>
 
         <Switch>
-            <Route path="/" exact>
-            <Posts callToParen={this.populateFavorites} />
-            </Route>
-            <Route path="/faves" exact>
-              <FavePost listNameFromParent={this.state.favoritePosts} />
-            </Route>
+          <Route path="/" exact>
+            <Posts callToParen={this.populateFavorites} faveVotesCount={this.populateCount}/>
+          </Route>
+          <Route path="/faves" exact>
+            <FavePost listNameFromParent={this.state.favoritePosts}/>
+          </Route>
         </Switch>
 
       </div>
