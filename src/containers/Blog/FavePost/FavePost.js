@@ -39,9 +39,15 @@ class FavePost extends Component {
           let outputList = [];
           let getFaveListFromParent = this.props.listNameFromParent;
           for (let i = 0; i < getFaveListFromParent.length; i++) {
+
             outputList = mapPosts.filter((x) => {
               return x.data.id === getFaveListFromParent[i];
             });
+
+            /*outputList.push(mapPosts.filter((x) => {
+                return x.data.id === getFaveListFromParent[i];
+              }));*/
+
           }
 
           this.setState({favedPosts: outputList});
@@ -51,18 +57,17 @@ class FavePost extends Component {
 
   render() {
 
-
     const Favored = this.state.favedPosts.map((post) => {
 
-      let createdTime = post['data'].created;
+      let createdTime = post.data.created;
       let postDate = new Date(createdTime).toDateString();
 
-      return <Post key={post['data'].id}
-                   url={post['data'].url}
-                   title={post['data'].title}
-                   author={post['data'].author}
+      return <Post key={post.data.id}
+                   url={post.data.url}
+                   title={post.data.title}
+                   author={post.data.author}
                    created={postDate}
-                   ups={post['data'].ups}/>
+                   ups={post.data.ups}/>
     });
 
     return (
