@@ -73,7 +73,7 @@ import Post from '../../../components/Post/Post';
       const posts = this.state.posts.map(post => {
 
         let createdTime = post.data.created;
-        let postDate = new Date(createdTime).toDateString();
+        let postDate = new Date(createdTime * 1000).toDateString();
 
         return (<Post
             key={post.data.id}
