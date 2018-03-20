@@ -44,8 +44,8 @@ class FavePost extends Component {
 
     const Favored = this.state.favedPosts.map((post, i) => {
 
-      let createdTime = post['data'].created;
-      let postDate = new Date(createdTime).toDateString();
+      let createdTime = post.data.created;
+      let postDate = new Date(createdTime * 1000).toDateString();
 
       return <Post key={post['data'].id}
                    url={post['data'].url}

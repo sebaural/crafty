@@ -38,7 +38,7 @@ class Blog extends Component {
           <nav>
             <ul className="tabs" onClick={(event) => this.toggleActive(event)}>
               <li className="first">
-                <Link to="/">
+                <Link to="/crafty">
                   <span>
                     <i className="fab fa-reddit-alien"></i>
                   </span>
@@ -65,7 +65,7 @@ class Blog extends Component {
         </header>
 
         <Switch>
-          <Route path="/" exact>
+          <Route path="/crafty" exact>
             <Posts callToParen={this.populateFavorites} faveVotesCount={this.populateCount}/>
           </Route>
           <Route path="/faves" exact>
